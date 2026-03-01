@@ -1,0 +1,191 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #050505;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+/* 1. HERO SLIDING TEXT ANIMATION */
+.hero {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.word {
+    display: inline-block;
+    font-size: clamp(3rem, 10vw, 6rem);
+    text-transform: uppercase;
+    font-weight: 900;
+    opacity: 0;
+    transform: translateY(100px) rotateX(-90deg);
+    animation: slideUpReveal 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.word.gold {
+    color: #d4af37;
+    animation-delay: 0.3s; /* Delay for staggered effect */
+}
+
+@keyframes slideUpReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+.fade-in-sub {
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards 1s;
+    letter-spacing: 5px;
+    color: #888;
+}
+
+/* 2. RESPONSIVE GRID ANIMATION */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20;
+    padding: 10px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.card {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    opacity: 0;
+    transform: scale(0.9);
+    animation: popIn 0.8s ease-out forwards 1.2s; /* Reveals after title */
+}
+
+@keyframes popIn {
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* 3. INTERACTIVE HOVER SLIDE */
+.card img {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+    transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.sliding-overlay {
+    position: absolute;
+    bottom: -100%; /* Start hidden below */
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(212, 175, 55, 0.9), transparent);
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    transition: 0.5s ease-in-out;
+}
+
+.card:hover .sliding-overlay {
+    bottom: 30%;
+}
+
+.card:hover img {
+    transform: scale(1.1) translateY(-10px);
+}
+
+/* Responsive Scaling */
+@media (max-width: 768px) {
+    .hero { height: 40vh; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;       /* Allows items to move to the next line if needed */
+  flex-direction: row;   /* Side-by-side on desktop */
+  gap: 2rem;             /* More space between items on desktop */
+  padding: 1rem;
+  justify-content: start; 
+  color: white;
+}
+
+/* Mobile-First Adjustment */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column; /* Stacks vertically on phones */
+    gap: 1.2rem;
+  }
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;   /* Prevents phone numbers from breaking onto two lines */
+}
+.me{ 
+    color: #ffd54f;
+    align-items: center;
+    margin-left: 25%;
+    font-size: 30px;
+}
+.text{
+    color: white;
+}
+/* Container to help with alignment and spacing */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-left: 150px;
+  
+}
+
+.profile-pic {
+  /* Set the base size for large screens */
+  width: 180px;
+  height: 180px;
+  
+  /* Makes it a circle */
+  border-radius: 50%;
+  
+  /* Key for responsiveness: ensures the image isn't stretched */
+  object-fit: cover;
+  
+  /* Optional styling: Border and Shadow */
+  border: 4px solid #ffffff;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  
+  /* Transition for a nice hover effect */
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect */
+.profile-pic:hover {
+  transform: scale(1.05);
+}
+
+/* Media Query for Mobile: Shrink the image slightly on smaller screens */
+@media (max-width: 600px) {
+  .profile-pic {
+    width: 130px;
+    height: 130px;
+  }
+}
+.muu{
+    margin-left: 170px;
+}
